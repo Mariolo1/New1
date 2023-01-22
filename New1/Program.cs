@@ -1,9 +1,9 @@
 ﻿using System.Globalization;
 
-string input = Console.ReadLine();
-var input1 = int.Parse(input);
+var input = Console.ReadLine();
+if(!int.TryParse(input, out _)) { return; }
 
-string numberinstring = input1.ToString();
+string numberinstring = input.ToString();
 char[] letters = numberinstring.ToArray();
 
 List<char> numbers = new List<char>();
@@ -26,8 +26,6 @@ foreach (var singular in numbers)
         if (singular == l) count++;
     }
     Console.WriteLine(singular + ">" + count);
-
-
 }
 
 
