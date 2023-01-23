@@ -1,30 +1,12 @@
-﻿using System.Globalization;
+﻿using New1;
+using System.Runtime.CompilerServices;
 
-var input = Console.ReadLine();
-if(!int.TryParse(input, out _)) { return; }
+User user1 = new User("Mariolo" , "1234");
+User user2 = new User("Monika" ,"1234");
+User user3 = new User("Ola" ,"1234" );
+User user4 = new User("Franek" , "1234" );
 
-char[] letters = input.ToArray();
-
-List<char> numbers = new List<char>();
-numbers.Add('0');
-numbers.Add('1');
-numbers.Add('2');
-numbers.Add('3');
-numbers.Add('4');
-numbers.Add('5');
-numbers.Add('6');
-numbers.Add('7');
-numbers.Add('8');
-numbers.Add('9');
-    foreach (var singular in numbers)
-{
-    int count = 0;
-    foreach(var l in letters)
-    {
-        if (singular == l) { count++; };
-    }
-
-    Console.WriteLine(singular + ">" + count);
-}
-
-
+user1.AddScore(5);
+user1.AddScore(2);
+var result = user1.Result;
+Console.WriteLine(result);
