@@ -27,18 +27,22 @@ player3.AddScore(4);
 player3.AddScore(3);
 // 15
 
+var Result1 = player1.Result;
+var Result2 = player2.Result;
+var Result3 = player3.Result;
 
-if (player1.Result >= player2.Result && player1.Result >= player3.Result)
+
+if (Result1 >= Result2 && Result1 >= Result3) 
 {
-    Console.WriteLine($"Najwyższy wynik osiągnął ; { player1.Name}  { player1.Surname} wiek: {player1.Age}  jego wynik to:  {player1.Result}.");
+    Console.WriteLine($" Najlepszy wynik ma : {player1.Name} {player1.Surname} wiek : {player1.Age} jego wynik to: {Result1}  ");
 }
 
-else if (player2.Result >= player1.Result && player2.Result >= player3.Result)
+else if (Result2 >= Result1 && Result2 >= Result3)
 {
-    Console.WriteLine($"Najwyższy wynik osiągnął ; {player2.Name}  {player2.Surname} wiek: {player2.Age}  jego wynik to:  {player2.Result}.");
+    Console.WriteLine($" Najlepszy wynik ma : {player2.Name} {player2.Surname} wiek : {player2.Age} jego wynik to: {Result2} ");
 }
 
-else if (player3.Result >= player1.Result && player3.Result >= player2.Result)
+else if (Result3 >= Result1 && Result3 >= Result2) 
 {
-    Console.WriteLine($"Najwyższy wynik osiągnął ; {player3.Name}  {player3.Surname} wiek: {player3.Age}  jego wynik to:  {player3.Result}.");
+    Console.WriteLine($" Najlepszy wynik ma : {player3.Name} {player3.Surname} wiek : {player3.Age} jego wynik to: {Result3} ");
 }

@@ -16,7 +16,7 @@ namespace New1
             this.Name = name;
             this.Surname = surname;
             this.Age = age;
-                    }
+        }
 
         public string Name { get; private set; }
         public string Surname { get; private set; }
@@ -31,6 +31,7 @@ namespace New1
         public void AddScore(int number)
         {
             this.score.Add(number);
+           
         }
     }
 }
