@@ -14,14 +14,12 @@
 
             //act
             var statistics = employee.GetStatistics();
-            var result = statistics.Min;
-            var result1 = statistics.Max;
-            var result2 =  statistics.Average;
+            
 
             //assert
-            Assert.AreEqual(22,result1 );
-            Assert.AreNotEqual(result, result1);
-            Assert.AreNotEqual(result2, result);
+            Assert.AreEqual(22,statistics.Max );
+            Assert.AreEqual(9,statistics.Min);
+            Assert.AreEqual(14,statistics.Average);
                        
         }
              

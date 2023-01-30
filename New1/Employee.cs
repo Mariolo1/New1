@@ -12,9 +12,32 @@
 
         public string Surname { get; private set; }//propercja
 
-        public void AddGrade(float grade) //metoda void nic nie zwraca
+
+        public void AddGrade(float grade) //metoda1 void nic nie zwraca
         {
-            this.grades.Add(grade);
+            if (grade >= 0 && grade <= 100) // walidacja
+            {
+                this.grades.Add(grade);
+            }
+            else
+            {
+                Console.WriteLine("invalid data");
+            }
+        }
+        public void AddGrade(string grade) //metoda2 zwraca string na float
+        {
+            if(float.TryParse(grade , out float result))
+            {
+                this.AddGrade(result);
+            }
+            else 
+            {
+                Console.WriteLine("String is not float ");
+            }
+        }
+        public void AddGrade(long grade)
+        {
+            this.AddGrade((float)grade);
         }
 
         public Statistics GetStatistics() //Metoda zwraca Statistics
