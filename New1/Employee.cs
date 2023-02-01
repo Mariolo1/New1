@@ -35,12 +35,8 @@
                 Console.WriteLine("String is not float ");
             }
         }
-        public void AddGrade(long grade)
-        {
-            this.AddGrade((float)grade);
-        }
-
-        public Statistics GetStatistics() //Metoda zwraca Statistics
+       
+        public Statistics GetStatisticsWitchForEach() //Metoda z pętlą ForEach
         {
             var statistics = new Statistics();
 
@@ -56,6 +52,75 @@
             }
 
             statistics.Average  /= this.grades.Count;
+
+            return statistics;
+
+        }
+        public Statistics GetStatisticsWitchWhile() //Metoda z pętlą While
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            var index = 0;
+
+           while(index < this.grades.Count)
+            {
+                statistics.Max = Math.Max(statistics.Max, grades[index]);
+                statistics.Min = Math.Min(statistics.Min, grades[index]);
+                statistics.Average += grades[index];
+                index++;
+            }
+
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
+
+        }
+
+        public Statistics GetStatisticsWitchFor() //Metoda z pętlą For
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            
+
+            for (var index = 0; index < this.grades.Count; index ++)
+            {
+                statistics.Max = Math.Max(statistics.Max, grades[index]);
+                statistics.Min = Math.Min(statistics.Min, grades[index]);
+                statistics.Average += grades[index];
+               
+            }
+
+            statistics.Average /= this.grades.Count;
+
+            return statistics;
+
+        }
+
+        public Statistics GetStatisticsWitchDoWhile() //Metoda z pętlą DoWhile
+        {
+            var statistics = new Statistics();
+
+            statistics.Average = 0;
+            statistics.Max = float.MinValue;
+            statistics.Min = float.MaxValue;
+            var index = 0;
+
+            do
+            {
+                statistics.Max = Math.Max(statistics.Max, grades[index]);
+                statistics.Min = Math.Min(statistics.Min, grades[index]);
+                statistics.Average += grades[index];
+                index++;
+
+            }while(index < this.grades.Count);
+
+            statistics.Average /= this.grades.Count;
 
             return statistics;
 
