@@ -1,31 +1,27 @@
 ﻿using New1;
 using System;
 
+Console.WriteLine(" Witaj w programie XYZ");
+Console.WriteLine("=======================");
+Console.WriteLine();
+
+
 var employee = new Employee("Mariusz", "Kowalski");
-employee.AddGrade(4);
-employee.AddGrade(5);
-employee.AddGrade(3);
+while(true)
+{
+    Console.WriteLine("Podaj kolejną ocenę pracownika");
+    var input = Console.ReadLine();
+    if (input == "q") 
+    {
+        break;
+    }
+    employee.AddGrade(input);
+}
+var statistics = employee.GetStatistics();
+Console.WriteLine($"Average for : {employee.Name} {employee.Surname} to {statistics.Average}");
+Console.WriteLine($"Min for: {employee.Name} {employee.Surname} to {statistics.Min}");
+Console.WriteLine($"Max: {employee.Name} {employee.Surname} to {statistics.Max}");
 
-var statistics = employee.GetStatisticsWitchForEach();
-Console.WriteLine($"Dla pętli ForEach:");
-Console.WriteLine($"Average = {statistics.Average:N2}");
-Console.WriteLine($"Min = {statistics.Min}");
-Console.WriteLine($"Max = {statistics.Max}");
 
-var statistics1 = employee.GetStatisticsWitchWhile();
-Console.WriteLine($"Dla pętli While:");
-Console.WriteLine($"Average = {statistics1.Average:N2}");
-Console.WriteLine($"Min = {statistics1.Min}");
-Console.WriteLine($"Max = {statistics1.Max}");
 
-var statistics2 = employee.GetStatisticsWitchFor();
-Console.WriteLine($"Dla pętli For:");
-Console.WriteLine($"Average = {statistics2.Average:N2}");
-Console.WriteLine($"Min = {statistics2.Min}");
-Console.WriteLine($"Max = {statistics2.Max}");
 
-var statistics3 = employee.GetStatisticsWitchDoWhile();
-Console.WriteLine($"Dla pętli DoWhile:");
-Console.WriteLine($"Average = {statistics3.Average:N2}");
-Console.WriteLine($"Min = {statistics3.Min}");
-Console.WriteLine($"Max = {statistics3.Max}");

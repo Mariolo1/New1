@@ -6,5 +6,7 @@
 
         public float Max { get; set; }// modele danych
         public float Average { get; set; }// modele danych
+
+        public char AverageLetter { get; set; }// modele danych
     }
 }

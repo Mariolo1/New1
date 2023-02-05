@@ -1,4 +1,6 @@
-﻿namespace New1
+﻿using System;
+
+namespace New1
 {
     public class Employee
     {
@@ -12,6 +14,19 @@
 
         public string Surname { get; private set; }//propercja
 
+        public void AddGrade(string grade) // metoda przedstawiająca string na float
+        {
+            if (float.TryParse(grade, out float result))
+            {
+                this.AddGrade(result);
+            }
+
+            else
+            {
+                Console.WriteLine("; String nie jest zmiennoprzecinkowy ");
+            }
+        }
+
 
         public void AddGrade(float grade) //metoda1 void nic nie zwraca
         {
@@ -21,22 +36,49 @@
             }
             else
             {
-                Console.WriteLine("invalid data");
+                Console.WriteLine("invalid data >100");
             }
         }
-        public void AddGrade(string grade) //metoda2 zwraca string na float
+        public void AddGrade(double grade) //metoda zwraca double na float
         {
-            if(float.TryParse(grade , out float result))
+            float gradesAsFloat = (float)grade;
+            this.AddGrade(gradesAsFloat);
+        }
+
+        public void AddGrade(int grade) //metoda zwraca int na float
+        {
+            float gradesAsFloat = (float)grade;
+            this.AddGrade(gradesAsFloat);
+        }
+
+        public void AddGrade(char grade) //metoda zwraca char na float
+        {
+            switch(grade)
             {
-                this.AddGrade(result);
-            }
-            else 
-            {
-                Console.WriteLine("String is not float ");
+                case 'A':
+                case 'a':
+                    this.grades.Add(100);
+                    break;
+                case 'B':
+                    this.grades.Add(80);
+                    break;
+                case 'C':
+                    this.grades.Add(60);
+                    break;
+                case 'D':
+                    this.grades.Add(40);
+                    break;
+                case 'E':
+                    this.grades.Add(20);
+                    break;
+                default:
+                    Console.WriteLine("Wrong Letter");
+                    break;
             }
         }
-       
-        public Statistics GetStatisticsWitchForEach() //Metoda z pętlą ForEach
+
+
+        public Statistics GetStatistics() //Metoda z pętlą ForEach
         {
             var statistics = new Statistics();
 
@@ -52,78 +94,36 @@
             }
 
             statistics.Average  /= this.grades.Count;
-
-            return statistics;
-
-        }
-        public Statistics GetStatisticsWitchWhile() //Metoda z pętlą While
-        {
-            var statistics = new Statistics();
-
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            var index = 0;
-
-           while(index < this.grades.Count)
+            switch(statistics.Average)
             {
-                statistics.Max = Math.Max(statistics.Max, grades[index]);
-                statistics.Min = Math.Min(statistics.Min, grades[index]);
-                statistics.Average += grades[index];
-                index++;
+                case var average when average >= 80:
+                    statistics.AverageLetter = 'A';
+                    break;
+                case var average when average >= 60:
+                    statistics.AverageLetter = 'B';
+                    break;
+                case var average when average >= 40:
+                    statistics.AverageLetter = 'C';
+                    break;
+                case var average when average >= 20:
+                    statistics.AverageLetter = 'D';
+                    break;
+                default:
+                    statistics.AverageLetter = 'E';
+                    break;
+
+
             }
 
-            statistics.Average /= this.grades.Count;
-
             return statistics;
 
         }
 
-        public Statistics GetStatisticsWitchFor() //Metoda z pętlą For
-        {
-            var statistics = new Statistics();
+         
+       
 
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            
+       
 
-            for (var index = 0; index < this.grades.Count; index ++)
-            {
-                statistics.Max = Math.Max(statistics.Max, grades[index]);
-                statistics.Min = Math.Min(statistics.Min, grades[index]);
-                statistics.Average += grades[index];
-               
-            }
-
-            statistics.Average /= this.grades.Count;
-
-            return statistics;
-
-        }
-
-        public Statistics GetStatisticsWitchDoWhile() //Metoda z pętlą DoWhile
-        {
-            var statistics = new Statistics();
-
-            statistics.Average = 0;
-            statistics.Max = float.MinValue;
-            statistics.Min = float.MaxValue;
-            var index = 0;
-
-            do
-            {
-                statistics.Max = Math.Max(statistics.Max, grades[index]);
-                statistics.Min = Math.Min(statistics.Min, grades[index]);
-                statistics.Average += grades[index];
-                index++;
-
-            }while(index < this.grades.Count);
-
-            statistics.Average /= this.grades.Count;
-
-            return statistics;
-
-        }
+        
     }
 }
