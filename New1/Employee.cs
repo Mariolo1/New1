@@ -24,10 +24,10 @@ namespace New1
 
             else
             {
-                Console.WriteLine(" String nie jest zmiennoprzecinkowy ");
+                throw new Exception("String is not float");
+                
             }
         }
-
 
         public void AddGrade(float grade) //metoda1 void nic nie zwraca
         {
@@ -37,7 +37,7 @@ namespace New1
             }
             else
             {
-                Console.WriteLine("invalid data >100");
+                throw new Exception("Invalid grade value");
             }
         }
         public void AddGrade(double grade) //metoda zwraca double na float
@@ -77,9 +77,9 @@ namespace New1
                     this.grades.Add(20);
                     break;
                 default:
-                    Console.WriteLine("Wrong Letter");
-                    break;
-            }
+                    throw new Exception("Wrong Letter");
+                   
+                               }
         }
 
 
