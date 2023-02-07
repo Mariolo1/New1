@@ -7,9 +7,9 @@
         {
             //arange
             var employee = new Employee("Mariusz", "Frankowski");
-            employee.AddGrade(22);
+            employee.AddGrade(44);
             employee.AddGrade(11);
-            employee.AddGrade(9);
+            employee.AddGrade(17);
 
 
             //act
@@ -17,9 +17,10 @@
             
 
             //assert
-            Assert.AreEqual(22,statistics.Max );
-            Assert.AreEqual(9,statistics.Min);
-            Assert.AreEqual(14,statistics.Average);
+            Assert.AreEqual(44,statistics.Max );
+            Assert.AreEqual(11,statistics.Min);
+            Assert.AreEqual(24,statistics.Average);
+            Assert.AreEqual('D', statistics.AverageLetter);
                        
         }
              
