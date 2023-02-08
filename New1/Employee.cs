@@ -3,18 +3,17 @@ using System.Linq.Expressions;
 
 namespace New1
 {
-    public class Employee
+    public class Employee : Person
     {
         private List<float> grades = new List<float>();
-        public Employee( string name, string surname)// konstruktor
+        public Employee( string name, string surname, int age)// konstruktor
+            :base(name,surname,age)
         {
-            this.Name = name;
-            this.Surname = surname;
+            
+            
         }
-        public string Name { get; private set; }  //propercja
-
-        public string Surname { get; private set; }//propercja
-
+      
+       
         public void AddGrade(string grade) // metoda przedstawiająca string na float
         {
             if (float.TryParse(grade, out float result))
@@ -79,7 +78,7 @@ namespace New1
                 default:
                     throw new Exception("Wrong Letter");
                    
-                               }
+            }
         }
 
 
@@ -117,13 +116,12 @@ namespace New1
                     statistics.AverageLetter = 'E';
                     break;
 
-
             }
 
             return statistics;
 
         }
-            
+         
               
     }
 }
